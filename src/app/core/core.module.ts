@@ -1,7 +1,7 @@
 import { NgModule, SkipSelf, Optional } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from '../app-routing.module';
 import { AgGridModule } from 'ag-grid-angular';
+import { HttpService } from './services/http.service';
 
 
 
@@ -9,9 +9,9 @@ import { AgGridModule } from 'ag-grid-angular';
 @NgModule({
   imports: [
     HttpClientModule,
-    AppRoutingModule,
     AgGridModule.withComponents([])
-  ]
+  ],
+  providers:[HttpService]
 })
 export class CoreModule { 
   constructor(@Optional() @SkipSelf() parentModule: CoreModule ){
