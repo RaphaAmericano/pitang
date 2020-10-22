@@ -11,8 +11,7 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   public getUserByName(name: string ): Observable<any>{
-    name = name.replace(' ', '+');
-    return this.http.get(`${environment.API}/search/users?q=${name}`).pipe(
+    return this.http.get(`${environment.API}search/users?q=${name}`).pipe(
       catchError(this.handleError)
     )
   }

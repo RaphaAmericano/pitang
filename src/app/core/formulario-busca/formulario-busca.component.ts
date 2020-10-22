@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { HttpService } from '../services/http.service';
 
 @Component({
@@ -17,6 +18,23 @@ export class FormularioBuscaComponent implements OnInit {
     this.formulario = this.formBuilder.group({
       nome:['', Validators.required]
     });
+
+  }
+
+  public submit(): void {
+    console.log(this.formulario.value);
+    if(this.formulario.valid){
+     this.sendData(this.formulario.get('nome').value); 
+    }
+  }
+
+  public sendData(query: string): void {
+    query = query.replace(' ', '+');
+    console.log(query);
+    this.httpService.getUserByName(query).pipe(
+      debounceTime(500),
+      distinctUntilChanged()
+    ).subscribe( res => console.log(res));
   }
 
 }
