@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Usuario } from '../core/models/Usuario.model';
 import { HttpService } from '../core/services/http.service';
+import { AvatarImageComponent } from '../shared/grid-components/avatar-image/avatar-image.component';
 
 @Component({
   selector: 'app-ranking',
@@ -17,12 +18,14 @@ export class RankingComponent implements OnInit {
     { field: 'name'},
     { field: 'username'},
     { field: 'url'},
-    { field: 'avatar'},
+    { field: 'avatar', cellRenderer: 'avatarImageComponent'},
   ];
 
-  public rows:any[] = [
+  public rows:any[] = []
 
-  ]
+  public frameworkComponents = {
+    avatarImageComponent: AvatarImageComponent
+  }
 
   constructor(private httpService: HttpService) { }
 
