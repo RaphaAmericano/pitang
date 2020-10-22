@@ -1,7 +1,8 @@
-<p>ranking works!</p>
-<ul>
-    <li *ngFor="let usuario of usuarios$ | async">
-        {{ usuario.username }}
-    </li>
+<h2>Rankind dos usuários mais ativos</h2>
 
-</ul>
+<ag-grid-angular 
+    style="width: 100%; height: 500px;"
+    class="ag-theme-alpine"
+    [columnDefs]="columns"
+    [rowData]="rows"
+></ag-grid-angular>

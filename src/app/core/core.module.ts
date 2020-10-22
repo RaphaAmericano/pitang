@@ -1,6 +1,5 @@
 import { NgModule, SkipSelf, Optional } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { AgGridModule } from 'ag-grid-angular';
 import { HttpService } from './services/http.service';
 import { FormularioBuscaComponent } from './formulario-busca/formulario-busca.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -15,8 +14,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     HttpClientModule,
     NgbNavModule,
     NgbCollapseModule,
-    ReactiveFormsModule,
-    AgGridModule.withComponents([])
+    ReactiveFormsModule
   ],
   exports:[FormularioBuscaComponent, NavbarComponent],
   providers:[HttpService],

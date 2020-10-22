@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
+import { Usuario } from '../core/models/Usuario.model';
 import { HttpService } from '../core/services/http.service';
 
 @Component({
@@ -10,14 +11,31 @@ import { HttpService } from '../core/services/http.service';
 })
 export class RankingComponent implements OnInit {
 
-  public usuarios$: Observable<any[]>;
+  public usuarios: any;
+
+  public columns:any[] = [
+    { field: 'name'},
+    { field: 'username'},
+    { field: 'url'},
+    { field: 'avatar'},
+  ];
+
+  public rows:any[] = [
+
+  ]
 
   constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
-    this.usuarios$ = this.httpService.getTrandingDevelopers().pipe(
-      tap( val => console.log(val))
-    );
+    this.httpService.getTrandingDevelopers().pipe(
+      tap( (usuarios: Usuario[]) => { 
+        this.rows = this.rowData(usuarios);
+      })
+    ).subscribe( usuarios => this.usuarios = usuarios);
+  }
+
+  public rowData(usuarios: Usuario[]): object[] { 
+    return usuarios.map( (usuario: Usuario) =>  ({ name: usuario.name, username: usuario.username, url: usuario.url, avatar: usuario.avatar }));
   }
 
 }
