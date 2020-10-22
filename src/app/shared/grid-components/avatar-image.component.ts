@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: '[avatar-image]',
@@ -12,11 +12,12 @@ export class AvatarImageComponent  {
 
   imgUrl: string;
 
-  agInit(params: string): void {
+  agInit(params: any): void {
     this.imgUrl = params['value'];
   }
 
   constructor() { }
 
+  
   
 }

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+
+import { tap } from 'rxjs/operators';
 import { Usuario } from '../core/models/Usuario.model';
 import { HttpService } from '../core/services/http.service';
-import { AvatarImageComponent } from '../shared/grid-components/avatar-image/avatar-image.component';
+import { AvatarImageComponent } from '../shared/grid-components/avatar-image.component';
+import { UrlAnchorComponent } from '../shared/grid-components/url-anchor.component';
 
 @Component({
   selector: 'app-ranking',
@@ -15,16 +16,17 @@ export class RankingComponent implements OnInit {
   public usuarios: any;
 
   public columns:any[] = [
-    { field: 'name'},
-    { field: 'username'},
-    { field: 'url'},
-    { field: 'avatar', cellRenderer: 'avatarImageComponent'},
+    { headerName: 'Nome', field: 'name'},
+    { headerName: 'Usuário', field: 'username'},
+    { headerName: 'Perfil', field: 'url', cellRenderer: 'userProfileUrlAnchor'},
+    { headerName: 'Avatar', field: 'avatar', cellRenderer: 'avatarImageComponent'},
   ];
 
   public rows:any[] = []
 
   public frameworkComponents = {
-    avatarImageComponent: AvatarImageComponent
+    avatarImageComponent: AvatarImageComponent,
+    userProfileUrlAnchor: UrlAnchorComponent
   }
 
   constructor(private httpService: HttpService) { }
