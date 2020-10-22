@@ -1,1 +1,7 @@
 <p>ranking works!</p>
+<ul>
+    <li *ngFor="let usuario of usuarios$ | async">
+        {{ usuario.username }}
+    </li>
+
+</ul>
