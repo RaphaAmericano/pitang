@@ -2,6 +2,10 @@ import { NgModule, SkipSelf, Optional } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpService } from './services/http.service';
+import { FormularioBuscaComponent } from './formulario-busca/formulario-busca.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgbCollapseModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 
@@ -9,9 +13,14 @@ import { HttpService } from './services/http.service';
 @NgModule({
   imports: [
     HttpClientModule,
+    NgbNavModule,
+    NgbCollapseModule,
+    ReactiveFormsModule,
     AgGridModule.withComponents([])
   ],
-  providers:[HttpService]
+  exports:[FormularioBuscaComponent, NavbarComponent],
+  providers:[HttpService],
+  declarations: [FormularioBuscaComponent, NavbarComponent]
 })
 export class CoreModule { 
   constructor(@Optional() @SkipSelf() parentModule: CoreModule ){
