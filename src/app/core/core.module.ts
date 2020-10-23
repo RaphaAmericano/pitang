@@ -5,6 +5,7 @@ import { FormularioBuscaComponent } from './formulario-busca/formulario-busca.co
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbCollapseModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -14,7 +15,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     HttpClientModule,
     NgbNavModule,
     NgbCollapseModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   exports:[FormularioBuscaComponent, NavbarComponent],
   providers:[HttpService],
