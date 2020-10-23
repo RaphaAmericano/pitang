@@ -1,0 +1,29 @@
+   
+
+
+
+<div class="card">
+    <h5 class="card-header">{{ usuario.login }}</h5>
+<div class="card-body">
+    <div class="media">
+        <img class="mr-3 img-responsive" src="{{ usuario.avatar_url }}" alt="Generic placeholder image">
+        <div class="media-body">
+          <h6 class="mt-0">Dados</h6>
+          <ul class="list-group">
+            <li class="list-group-item"><a href="{{ usuario.html_url}}" target="_blank">Perfil</a></li>
+            <li class="list-group-item">ID: {{ usuario.id }}</li>
+          </ul>
+        </div>
+      </div>
+</div>
+<div class="card-body">
+    <h5 class="card-title">Repositórios</h5>
+    <ag-grid-angular
+    style="width: 100%; height: 800px;"
+    class="ag-theme-alpine"
+    [columnDefs]="columns"
+    [rowData]="rows"
+    [framworkComponents]="framworkComponents"
+    ></ag-grid-angular>
+    </div>
+</div>

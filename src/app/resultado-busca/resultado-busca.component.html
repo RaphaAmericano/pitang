@@ -1,5 +1,8 @@
 <ul class="list-group">
-    <li *ngFor="let usuario of usuarios$ | async" class="list-group-item">
-        {{ usuario.login }}
-    </li>
+    <li *ngFor="let usuario of usuarios$ | async" 
+    resultado-linha 
+    class="list-group-item" 
+    [usuario]="usuario"
+    [repositorios]="usuario.repos" 
+    ></li>
 </ul>

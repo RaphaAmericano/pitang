@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
+import { ResponseRepositorio } from '../core/models/response.repositorio.model';
 import { ResponseUsuario } from '../core/models/response.usuario.model';
 import { HttpService } from '../core/services/http.service';
 import { StateService } from '../core/services/state.service';
@@ -31,5 +32,4 @@ export class ResultadoBuscaComponent implements OnInit {
     ).subscribe();
 
   } 
-
 }
