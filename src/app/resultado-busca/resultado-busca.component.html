@@ -1,1 +1,5 @@
-<p>resultado-busca works!</p>
+<ul class="list-group">
+    <li *ngFor="let usuario of usuarios$ | async" class="list-group-item">
+        {{ usuario.login }}
+    </li>
+</ul>

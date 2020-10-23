@@ -10,14 +10,24 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
   
-
-
-
   public getUserByName(name: string ): Observable<any>{
     return this.http.get(`${environment.API}search/users?q=${name}`).pipe(
       catchError(this.handleError)
     )
   }
+
+  public getReposOfUser(login:string): Observable<any> {
+    return this.http.get(`${environment.API}users/${login}/repos?sort=update&order=desc`).pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  public getReposByUrl(url: string): Observable<any> {
+    return this.http.get(url).pipe(
+      catchError(this.handleError)
+    )
+  }
+
 
   // API for do ar, hoje dia 22/10
   // https://github-trending-api.now.sh/repositories?since=today

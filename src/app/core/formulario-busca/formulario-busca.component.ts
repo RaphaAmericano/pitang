@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { HttpService } from '../services/http.service';
+import { StateService } from '../services/state.service';
 
 @Component({
   selector: 'app-formulario-busca',
@@ -12,7 +11,9 @@ export class FormularioBuscaComponent implements OnInit {
 
   public formulario: FormGroup;
 
-  constructor(private httpService: HttpService, private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private stateService: StateService) { }
 
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
@@ -22,7 +23,6 @@ export class FormularioBuscaComponent implements OnInit {
   }
 
   public submit(): void {
-    console.log(this.formulario.value);
     if(this.formulario.valid){
      this.sendData(this.formulario.get('nome').value); 
     }
@@ -30,11 +30,7 @@ export class FormularioBuscaComponent implements OnInit {
 
   public sendData(query: string): void {
     query = query.replace(' ', '+');
-    console.log(query);
-    this.httpService.getUserByName(query).pipe(
-      debounceTime(500),
-      distinctUntilChanged()
-    ).subscribe( res => console.log(res));
+    this.stateService.subjectNewValue(query);
   }
 
 }

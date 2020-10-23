@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { StateService } from '../services/state.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,10 +9,10 @@ export class NavbarComponent implements OnInit {
 
   public isMenuCollapsed:boolean = true;
 
-  constructor(private stateService: StateService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.stateService.start();
   }
+
 
 }
