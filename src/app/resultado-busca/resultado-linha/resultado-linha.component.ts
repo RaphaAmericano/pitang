@@ -29,7 +29,7 @@ export class ResultadoLinhaComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.usuario)
+    
   }
 
   ngOnChanges(changes: SimpleChanges): void {

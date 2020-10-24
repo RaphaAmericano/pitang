@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
-import { shareReplay, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,15 +11,15 @@ export class StateService {
   public busca$: Observable<string>; 
 
   constructor() {
-    this.loadDataFromSession();
-   }
+    this.start()
+  }
 
   public start(){
     this.busca$Subject = new ReplaySubject<string>(5);
     this.busca$ = this.busca$Subject.asObservable().pipe(
-      shareReplay(5),
       tap( query => this.setSessionStorage(query))
     );
+    this.loadDataFromSession();
   }
 
   public subjectNewValue(value: string){
@@ -32,11 +32,10 @@ export class StateService {
 
   public setSessionStorage(query: string): void {
     let sessionData = this.getSessionStorage() || [];
-
-    console.log(sessionData);
     sessionData.unshift(query);
-    console.log(sessionData.length);
-
+    sessionData = sessionData.filter((value, index, self) => {
+      return self.indexOf(value) === index;
+    });
     if(sessionData.length > 5 ){
       sessionData.pop();
     }
@@ -48,8 +47,8 @@ export class StateService {
   }
 
   public loadDataFromSession(): void {
-    // const data = this.getSessionStorage();
-    // data.map( query => this.subjectNewValue(query))
+    const dataSession = this.getSessionStorage();
+    dataSession.map( query => this.subjectNewValue(query));
   }
 
 }
