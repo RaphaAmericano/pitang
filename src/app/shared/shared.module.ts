@@ -7,7 +7,7 @@ import { DateCellComponent } from './grid-components/date-cell.component';
 
 
 @NgModule({
-  declarations: [DateCellComponent],
+  declarations: [],
   imports: [AgGridModule.withComponents([AvatarImageComponent, UrlAnchorComponent, DateCellComponent])],
   exports:[AgGridModule]
 })

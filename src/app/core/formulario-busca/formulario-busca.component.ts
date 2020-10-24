@@ -29,7 +29,7 @@ export class FormularioBuscaComponent implements OnInit {
   }
 
   public sendData(query: string): void {
-    query = query.replace(' ', '+');
+    query = query.trim().replace(' ', '+');
     this.stateService.subjectNewValue(query);
   }
 

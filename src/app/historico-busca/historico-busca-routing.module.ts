@@ -11,5 +11,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class HistoricoBuscaRoutingModule {
-  static components = [HistoricoBuscaComponent]
+  static components = [HistoricoBuscaComponent];
  }

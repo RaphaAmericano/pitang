@@ -1,1 +1,8 @@
-<p>historico-busca works!</p>
+<h5>Histórico de buscas </h5>
+<span>{{ historico | json  }}</span>
+<ul>
+
+    <li *ngFor="let item of historico">
+        {{ item }}
+    </li>
+</ul>
