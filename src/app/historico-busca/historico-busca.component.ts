@@ -18,7 +18,7 @@ export class HistoricoBuscaComponent implements OnInit {
   ngOnInit(): void {
     this.stateService.getBuscaObservable().pipe( 
       tap(val => { 
-        const newValue = val.replace('+', ' ');
+        const newValue = val.replace(/\+/g, ' ');
         const check = this.historico.find(element => element == newValue);
         if(check == undefined){
           this.historico.unshift(newValue);
@@ -32,7 +32,7 @@ export class HistoricoBuscaComponent implements OnInit {
   }
 
   public sendToBuscaDashboard(query: string){
-    query = query.trim().replace(' ', '+');
+    query = query.trim().replace(/\s/g, '+');
     this.stateService.subjectNewValue(query);
     this.router.navigate(['busca']);
   }

@@ -28,7 +28,7 @@ export class FormularioBuscaComponent implements OnInit {
   }
 
   public sendData(query: string): void {
-    query = query.trim().replace(' ', '+');
+    query = query.trim().replace(/\s/g, '+');
     this.stateService.subjectNewValue(query);
   }
 
