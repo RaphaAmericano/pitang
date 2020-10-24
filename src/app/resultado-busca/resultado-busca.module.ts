@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { ResultadoBuscaRoutingModule } from './resultado-busca-routing.module';
 import { ResultadoLinhaComponent } from './resultado-linha/resultado-linha.component';
@@ -12,6 +12,7 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     ResultadoBuscaRoutingModule, 
     SharedModule
-  ]
+  ],
+  providers:[DatePipe]
 })
 export class ResultadoBuscaModule { }

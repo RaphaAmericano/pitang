@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Repositorio } from 'src/app/core/models/repositorio.model';
 import { Usuario } from 'src/app/core/models/Usuario.model';
+import { DateCellComponent } from 'src/app/shared/grid-components/date-cell.component';
 
 @Component({
   selector: '[resultado-linha]',
@@ -14,15 +15,15 @@ export class ResultadoLinhaComponent implements OnInit, OnChanges {
   public columns: any[] = [
     { headerName: 'Nome', field: 'name'},
     { headerName: 'Id', field: 'id'},
-    { headerName: 'Atualizado em:', field: 'updated_at'},
-    { headerName: 'Criado em:', field: 'created_at'},
+    { headerName: 'Atualizado em:', field: 'updated_at', cellRenderer: 'dateCell'},
+    { headerName: 'Criado em:', field: 'created_at', cellRenderer: 'dateCell'},
     { headerName: 'Linguagem', field: 'language'},
   ]
 
   public rows: any[] = [];
 
-  public framworkComponents = {
-    //
+  public frameworkComponents = {
+    dateCell: DateCellComponent
   }
 
   constructor() { }
