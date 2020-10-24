@@ -19,7 +19,6 @@ export class FormularioBuscaComponent implements OnInit {
     this.formulario = this.formBuilder.group({
       nome:['', Validators.required]
     });
-    
   }
 
   public submit(): void {

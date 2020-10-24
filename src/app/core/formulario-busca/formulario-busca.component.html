@@ -2,7 +2,7 @@
     <div class="form-group">
       <label class="h4">Busca</label>
       <input type="text" class="form-control" placeholder="Nome" formControlName="nome">
-      <small class="form-text text-muted">Procure o usuário do Github</small>
+      <small class="form-text text-muted" >Procure o usuário do Github</small>
     </div>
-    <button type="submit" class="btn btn-primary">Buscar</button>
+    <button type="submit" class="btn btn-primary" [disabled]="formulario.get('nome').invalid">Buscar</button>
   </form>
