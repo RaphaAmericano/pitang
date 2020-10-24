@@ -13,7 +13,7 @@ export class ResultadoLinhaComponent implements OnInit, OnChanges {
   @Input('usuario') usuario:Usuario;
   @Input('repositorios') repositorios:Repositorio[];
   public columns: any[] = [
-    { headerName: 'Nome', field: 'name'},
+    { headerName: 'Nome', field: 'name', width: 250 },
     { headerName: 'Id', field: 'id'},
     { headerName: 'Atualizado em:', field: 'updated_at', cellRenderer: 'dateCell'},
     { headerName: 'Criado em:', field: 'created_at', cellRenderer: 'dateCell'},

@@ -16,13 +16,15 @@ export class RankingComponent implements OnInit {
   public usuarios: any;
 
   public columns:any[] = [
-    { headerName: 'Nome', field: 'name'},
-    { headerName: 'Usuário', field: 'username'},
-    { headerName: 'Perfil', field: 'url', cellRenderer: 'userProfileUrlAnchor'},
-    { headerName: 'Avatar', field: 'avatar', cellRenderer: 'avatarImageComponent'},
+    { headerName: 'Avatar', field: 'avatar', width: 100, suppressSizeToFit: true, cellRenderer: 'avatarImageComponent'},
+    { headerName: 'Nome', field: 'name', width: 300, suppressSizeToFit: true },
+    { headerName: 'Usuário', field: 'username', width: 300, suppressSizeToFit: true},
+    { headerName: 'Perfil', field: 'url', width: 200, suppressSizeToFit: true, cellRenderer: 'userProfileUrlAnchor'},
   ];
 
   public rows:any[] = []
+
+  public defaultColDef:object = { resizable: true };
 
   public frameworkComponents = {
     avatarImageComponent: AvatarImageComponent,
@@ -40,7 +42,7 @@ export class RankingComponent implements OnInit {
   }
 
   public rowData(usuarios: Usuario[]): object[] { 
-    return usuarios.map( (usuario: Usuario) =>  ({ name: usuario.name, username: usuario.username, url: usuario.url, avatar: usuario.avatar }));
+    return usuarios.map( (usuario: Usuario) =>  ({ avatar: usuario.avatar, name: usuario.name, username: usuario.username, url: usuario.url  }));
   }
 
 }

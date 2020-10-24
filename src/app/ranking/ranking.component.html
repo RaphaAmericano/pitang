@@ -1,8 +1,9 @@
-<h2>Ranking dos usuários mais ativos</h2>
+<h4>Ranking dos usuários mais ativos</h4>
 
 <ag-grid-angular 
     style="width: 100%; height: 500px;"
     class="ag-theme-alpine"
+    [defaultColDef]="defaultColDef"
     [columnDefs]="columns"
     [rowData]="rows"
     [frameworkComponents]="frameworkComponents"
