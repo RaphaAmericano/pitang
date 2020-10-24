@@ -20,10 +20,6 @@ export class StateService {
     this.busca$Subject.next(value);
   }
 
-  public getBuscaSubject(): ReplaySubject<string> {
-    return this.busca$Subject;
-  }
-
   public getBuscaObservable(): Observable<string> {
     return this.busca$;
   }

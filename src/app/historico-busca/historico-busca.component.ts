@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, zip } from 'rxjs';
 import { distinctUntilChanged, take, tap } from 'rxjs/operators';
 import { StateService } from '../core/services/state.service';
@@ -12,14 +13,13 @@ export class HistoricoBuscaComponent implements OnInit {
 
   public historico$: Observable<string[]>;
   public historico: any[] = [];
-  constructor(private stateService: StateService) { }
+  constructor(private stateService: StateService, private router: Router) { }
 
   ngOnInit(): void {
     this.stateService.getBuscaObservable().pipe( 
       tap(val => { 
         const newValue = val.replace('+', ' ');
         const check = this.historico.find(element => element == newValue);
-        console.log(check);
         if(check == undefined){
           this.historico.unshift(newValue);
         }
@@ -29,6 +29,12 @@ export class HistoricoBuscaComponent implements OnInit {
         this.historico.pop();
       }
     } ) ;
+  }
+
+  public sendToBuscaDashboard(query: string){
+    query = query.trim().replace(' ', '+');
+    this.stateService.subjectNewValue(query);
+    this.router.navigate(['busca']);
   }
 
 }
